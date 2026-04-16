@@ -18,9 +18,9 @@ const Navbar = () => {
                     </div>
                     <div className="flex-none">
                         <ul className="menu menu-horizontal px-1">
-                            <li><NavLink href="/routes/home"><RiHome2Line />Home</NavLink></li>
-                            <li><NavLink href="/routes/timeline"><LuClock3 />Timeline</NavLink></li>
-                            <li><NavLink href="/routes/stats"><GoGraph />Stats</NavLink></li>
+                            <li><NavLink href="/"><RiHome2Line className="font-bold text-2xl"/>Home</NavLink></li>
+                            <li><NavLink href="/timeline"><LuClock3 className="font-bold text-2xl"/>Timeline</NavLink></li>
+                            <li><NavLink href="/stats"><GoGraph className="font-bold text-2xl"/>Stats</NavLink></li>
                         </ul>
                     </div>
                 </div>

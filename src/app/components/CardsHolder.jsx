@@ -1,7 +1,18 @@
 import Card from "./Card";
+import fs from "fs/promises";
+import path from "path";
 
 
-const CardsHolder = () => {
+
+const getData = async () => {
+  const filePath = path.join(process.cwd(), "public/data.json");
+  const file = await fs.readFile(filePath, "utf-8");
+  return JSON.parse(file);
+};
+
+
+const CardsHolder = async () => {
+  const data = await getData();
     return (
         <>
             <div className="container mx-auto flex flex-col justify-center items-center">
@@ -11,17 +22,21 @@ const CardsHolder = () => {
             </div>
             <div className="container mx-auto pb-8 p-3 border-b border-gray-300">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div className="flex flex-col items-center justify-center bg-white shadow-md p-8 rounded-xl"><h2 className="text-[#244d3f] text-4xl font-bold">10</h2><p className="text-[#64748b] text-[18px]">Total Friend</p></div>
-                    <div className="flex flex-col items-center justify-center bg-white shadow-md p-8 rounded-xl"><h2 className="text-[#244d3f] text-4xl font-bold">10</h2><p className="text-[#64748b] text-[18px]">Total Friend</p></div>
-                    <div className="flex flex-col items-center justify-center bg-white shadow-md p-8 rounded-xl"><h2 className="text-[#244d3f] text-4xl font-bold">10</h2><p className="text-[#64748b] text-[18px]">Total Friend</p></div>
-                    <div className="flex flex-col items-center justify-center bg-white shadow-md p-48rounded-xl"><h2 className="text-[#244d3f] text-4xl font-bold">10</h2><p className="text-[#64748b] text-[18px]">Total Friend</p></div>
+                    <div className="flex flex-col items-center justify-center bg-white shadow-md p-8 rounded-xl"><h2 className="text-[#244d3f] text-4xl font-bold">12</h2><p className="text-[#64748b] text-[18px]">Total Friend</p></div>
+                    <div className="flex flex-col items-center justify-center bg-white shadow-md p-8 rounded-xl"><h2 className="text-[#244d3f] text-4xl font-bold">3</h2><p className="text-[#64748b] text-[18px]">On Track</p></div>
+                    <div className="flex flex-col items-center justify-center bg-white shadow-md p-8 rounded-xl"><h2 className="text-[#244d3f] text-4xl font-bold">6</h2><p className="text-[#64748b] text-[18px]">Need Attention</p></div>
+                    <div className="flex flex-col items-center justify-center bg-white shadow-md p-8 rounded-xl"><h2 className="text-[#244d3f] text-4xl font-bold">12</h2><p className="text-[#64748b] text-[18px]">Interactions This Month</p></div>
                 </div>
             </div>
             {/* cards section */}
             <div className="container mx-auto mt-8 p-3">
                 <h2 className="py-2 text-2xl font-bold text-[#1f2937]">Your friends</h2>
-                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-7">
-                    <Card/><Card/><Card/><Card/><Card/><Card/><Card/>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-7 mb-[80px]">
+                    {data.map((item)=>{
+                        return(
+                            <Card key={item.id} item={item}/>
+                        )
+                    })}
                 </div>
             </div>
         </>

@@ -1,12 +1,9 @@
-import Chart from "./components/Chart";
-
-
+import CardsHolder from "./components/CardsHolder";
 
 const page = () => {
   return (
     <div>
-
-      <Chart/>
+      <CardsHolder/>
     </div>
   );
 };
