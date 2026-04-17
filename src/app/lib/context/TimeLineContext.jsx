@@ -6,6 +6,8 @@ export const TimeLineContext = createContext()
 const TimeLineContextProvider =({children})=>{
     const[timeLineData, setTimeLineData] = useState([])
 
+    console.log(timeLineData)
+
     const data = {
         timeLineData,
         setTimeLineData

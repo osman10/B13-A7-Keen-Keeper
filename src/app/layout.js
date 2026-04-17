@@ -3,6 +3,7 @@ import "./globals.css";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import Providers from "./lib/context";
+import { ToastContainer } from "react-toastify";
 
 
 
@@ -32,6 +33,7 @@ export default function RootLayout({ children }) {
         <Navbar/>
         <Providers>
           {children}
+          <ToastContainer position="top-center"/>
         </Providers>
         <Footer/>
         </body>
